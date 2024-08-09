@@ -1,0 +1,50 @@
+<div class="main">
+  <h1>{{ componentTitle }}</h1>
+
+
+  
+  
+  <input
+  #newItem
+    placeholder="add um item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput" />
+  
+  <button class="btn-primary" (click)="addItem(newItem.value)">Adicionar</button>
+
+<div class="btn-wrapper">
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'all'"
+    (click)="filter = 'all'">
+    Todos
+  </button>
+
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'active'"
+    (click)="filter = 'active'">
+    Pendentes
+  </button>
+
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'done'"
+    (click)="filter = 'done'">
+    Feitos
+  </button>
+</div>
+
+
+
+  
+  <ul>
+    <li *ngFor="let i of items">
+      <app-item (remove)="remove(i)" [item]="i"></app-item>
+    </li>
+  </ul> 
+
+
+</div>
+
